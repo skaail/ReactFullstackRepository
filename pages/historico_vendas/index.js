@@ -1,9 +1,7 @@
 import { createClient } from "next-sanity";
 import Header from "../../components/Header";
 import NavBar from "../../components/NavBar";
-
-
-
+import Table from 'react-bootstrap/Table';
 
 
 export default function IndexPage({ vendas }) {
@@ -15,16 +13,15 @@ export default function IndexPage({ vendas }) {
         <h1>Histórico de vendas</h1>
       </header>
       <main>
-
-        <table border='1' className="table">
-          <thead>
-            <tr>
-              <td scope="col">Cliente</td>
-              <td scope="col">Produto</td>
-              <td scope="col">Data</td>
-            </tr>
-          </thead>
-          <tbody>
+      <Table  striped bordered hover size="sm">
+            <thead>
+              <tr>
+                <th>Cliente</th>
+                <th>Produto</th>
+                <th>Data</th>
+              </tr>
+            </thead>
+            <tbody>
             {vendas.map((vendas) => (
               <tr>
                 <td key={vendas.cliente}>{vendas?.cliente}</td>
@@ -33,7 +30,7 @@ export default function IndexPage({ vendas }) {
               </tr>
             ))}
           </tbody>
-        </table>
+      </Table>
       </main>
     </>
   );

@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import Head from 'next/head'
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 export default class Header extends Component {
   render() {
