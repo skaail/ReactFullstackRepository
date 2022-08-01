@@ -65,7 +65,7 @@ const client = createClient({
 
 
 export async function getStaticProps() {
-  const vendas = await client.fetch(`*[_type == "vendas" && status == 'none']`);
+  let vendas = await client.fetch(`*[_type == "vendas" && status == 'none']`);
   return {
     props: {
       vendas
