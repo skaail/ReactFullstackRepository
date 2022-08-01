@@ -24,9 +24,9 @@ export default function IndexPage({ vendas }) {
             <tbody>
             {vendas.map((vendas) => (
               <tr>
-                <td key={vendas.cliente}>{vendas?.cliente}</td>
-                <td key={vendas.produto}>{vendas?.produto}</td>
-                <td key={vendas._createdAt}>{vendas?._createdAt}</td>
+                <td >{vendas.cliente}</td>
+                <td >{vendas.produto}</td>
+                <td >{vendas._createdAt}</td>
               </tr>
             ))}
           </tbody>
@@ -36,20 +36,27 @@ export default function IndexPage({ vendas }) {
   );
 }
 
-const client = createClient({
-  projectId: "j8341ehi",
-  dataset: "production",
-  apiVersion: "2021-10-14",
-  useCdn: false
-});
+window.onload = function (){
+  getStaticProps()
+
+  const client = createClient({
+    projectId: "j8341ehi",
+    dataset: "production",
+    apiVersion: "2021-10-14",
+    useCdn: false
+  });
+}
+
+
 
 
 export async function getStaticProps() {
   const vendas = await client.fetch(`*[_type == "vendas"]`);
-
   return {
     props: {
       vendas
     }
   };
+
+
 }
