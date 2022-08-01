@@ -22,8 +22,9 @@ export default function IndexPage({ vendas }) {
 
 
 const client = createClient({
-  projectId: "tmdmvjqt",
-  dataset: "compras",
+  projectId: process.env.SANITY_API_PROJECT_ID,
+  dataset: process.env.SANITY_API_DATASET,
+  token: process.env.SANITY_API_WRITE_TOKEN, 
   apiVersion: "2021-10-14",
   useCdn: false
 });
