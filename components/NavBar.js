@@ -14,7 +14,7 @@ export default class NavBar extends Component {
           <Nav className="me-auto">
             <Nav.Link href="/historico_vendas">Histórico de vendas</Nav.Link>
             <Nav.Link href="/cadastro_vendas">Cadastro de vendas</Nav.Link>
-            <Nav.Link href="/cadsatro_vendedor">Cadastro de vendedor</Nav.Link>
+            <Nav.Link href="/aprovar_vendas">Aprovar Vendas</Nav.Link>
           </Nav>
         </Navbar.Collapse>
       </Container>

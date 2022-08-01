@@ -14,6 +14,11 @@ export default {
         type: "string",
       },
       {
+        name: "valor",
+        title: "Valor",
+        type: "number",
+      },
+      {
         name: "date",
         title: "Data",
         type: "datetime",

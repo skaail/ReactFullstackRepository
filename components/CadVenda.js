@@ -19,16 +19,20 @@ export default class CadVenda extends Component {
     
         const cliente = e.target.cliente.value;
         const produto = e.target.produto.value;
+        const valor = e.target.valor.value;
+        
 
         const doc = {
           
           _type: 'vendas',
           cliente: cliente,
           produto: produto,
+          valor: valor,
+          status: 'none'
         }
         
         client.create(doc).then((res) => {
-          console.log('Bike was created (or was already present)')
+          
         })
 
       };
@@ -38,15 +42,15 @@ export default class CadVenda extends Component {
         <form onSubmit={this.handleSubmit}>
         <div className="mb-3">
             <label htmlFor="Cliente" className="form-label">Cliente</label>
-            <input type="text" className="form-control" name="cliente"></input>
+            <input type="text" className="form-control" name="cliente" required></input>
         </div>
         <div className="mb-3">
         <label htmlFor="Produto" className="form-label">Produto</label>
-            <input type="text" className="form-control" name="produto"></input>
+            <input type="text" className="form-control" name="produto" required></input>
         </div>
         <div className="mb-3">
-        <label htmlFor="Ciente" className="form-label">Data</label>
-            <input type="date" className="form-control" name="data"></input>
+        <label htmlFor="Valor" className="form-label">Valor</label>
+            <input type="text" className="form-control" name="valor" required></input>
         </div>
         <button type="submit" className="btn btn-primary">Submit</button>
         </form>

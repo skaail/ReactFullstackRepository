@@ -3,7 +3,18 @@ import Header from "../../components/Header";
 import NavBar from "../../components/NavBar";
 import Table from 'react-bootstrap/Table';
 
+
+function aprovarVenda(id){
+    client.patch(id).set({status: 'Aprovada'}).commit().then((res) => {window.location.reload(false);})
+}
+
+function reprovarVenda(id){
+    client.patch(id).set({status: 'Reprovada'}).commit().then((res) => {window.location.reload(false);})
+}
+
 export default function IndexPage({ vendas }) {
+
+
 
   return (
     <>
@@ -20,18 +31,19 @@ export default function IndexPage({ vendas }) {
                 <th>Produto</th>
                 <th>Valor</th>
                 <th>Data</th>
-                <th>Comissão</th>
+                <th>Aprovação</th>
               </tr>
             </thead>
             <tbody>
             {vendas.map((vendas) => (
               
-              <tr className={vendas.status}>
+              <tr className='{vendas.status}'>
                 <td >{vendas.cliente}</td>
                 <td >{vendas.produto}</td>
                 <td >{vendas.valor}</td>
                 <td >{vendas._createdAt}</td>
-                <td >{vendas.comis}</td>
+                <td ><button onClick={() => aprovarVenda(vendas._id)}>Aprovar venda</button>
+                <button onClick={() => reprovarVenda(vendas._id)}>Reprovar venda</button></td>
               </tr>
             ))}
           </tbody>
@@ -53,7 +65,7 @@ const client = createClient({
 
 
 export async function getStaticProps() {
-  const vendas = await client.fetch(`*[_type == "vendas"]`);
+  const vendas = await client.fetch(`*[_type == "vendas" && status == 'none']`);
   return {
     props: {
       vendas
