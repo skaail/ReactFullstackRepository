@@ -49,7 +49,7 @@ const client = createClient({
 
 
 export async function getStaticProps() {
-  const vendas = await client.fetch();
+  const vendas = await client.fetch(`*[_type == "vendas"]`);
   return {
     props: {
       vendas
@@ -59,13 +59,11 @@ export async function getStaticProps() {
 
 }
 
+const query = '*[_type == "vendas"]'
 
-const query = `*[_type == "vendas"]`
-
-const subscription = client.listen(query).subscribe((update) => {
-  const comment = update.result
-  console.log(`${comment.cliente} commented: ${comment.produto}`)
+client.fetch(query).then((vendas) => {
+  console.log('Bikes with more than one seat:')
+  vendas.forEach((venda) => {
+    console.log(`${venda.cliente} (${venda.produto} seats)`)
+  })
 })
-
-// to unsubscribe later on
-subscription.unsubscribe()
