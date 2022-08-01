@@ -17,8 +17,8 @@ export default function IndexPage({ vendas }) {
 }
 
 const client = createClient({
-  projectId: "j8341ehi",
-  dataset: "production",
+  projectId: "tmdmvjqt",
+  dataset: "compras",
   apiVersion: "2021-10-14",
   useCdn: false
 });

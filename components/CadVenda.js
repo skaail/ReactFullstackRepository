@@ -29,7 +29,7 @@ export default class CadVenda extends Component {
              ]
            });
            
-           fetch("https://j8341eh.api.sanity.io/v2021-06-07/data/mutate/production", { 
+           fetch("https://tmdmvjqt.api.sanity.io/v2021-06-07/data/mutate/production", { 
              method: "POST",
              body: bodyContent,
              headers: headersList
