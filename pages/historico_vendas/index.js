@@ -48,10 +48,13 @@ const client = createClient({
 });
 
 
-const query = '*[_type == "vendas"]'
+export async function getStaticProps() {
+  const vendas = await client.fetch(`*[_type == "vendas"]`);
+  return {
+    props: {
+      vendas
+    }
+  };
 
-const vendas = client.listen(query)
-  .subscribe(update => {
-    const vendas = update.result
-    console.log(`${vendas.cliente} commented: ${vendas.produto}`)
-  })
+
+}
