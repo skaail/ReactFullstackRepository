@@ -64,12 +64,11 @@ const client = createClient({
 });
 
 
-export async function getStaticProps() {
-  let vendas = await client.fetch(`*[_type == "vendas" && status == 'none']`);
+export async function getServerSideProps() {
+  const vendas = await client.fetch(`*[_type == "vendas" && status == 'none']`)
   return {
     props: {
       vendas
-    },
-    revalidate: 600,
-  };
+    }
+  }
 }
