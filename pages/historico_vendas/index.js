@@ -3,27 +3,13 @@ import Header from "../../components/Header";
 import NavBar from "../../components/NavBar";
 import Table from 'react-bootstrap/Table';
 
-const client = createClient({
-  projectId: process.env.SANITY_API_PROJECT_ID,
-  dataset: process.env.SANITY_API_DATASET,
-  token: process.env.SANITY_API_WRITE_TOKEN, 
-  apiVersion: "2021-10-14",
-  useCdn: false
-});
-
-
 
 export default function IndexPage({ vendas }) {
 
   state = {
     vendas: null
   };
-
-
-   async function getStaticProps() {
-    const vendas = await client.fetch(`*[_type == "vendas"]`);
-    };
-
+  
 
 
 
@@ -60,8 +46,22 @@ export default function IndexPage({ vendas }) {
 
 
 
+const client = createClient({
+  projectId: process.env.SANITY_API_PROJECT_ID,
+  dataset: process.env.SANITY_API_DATASET,
+  token: process.env.SANITY_API_WRITE_TOKEN, 
+  apiVersion: "2021-10-14",
+  useCdn: false
+});
 
 
+export async function getStaticProps() {
+  const vendas = await client.fetch(`*[_type == "vendas"]`);
+  return {
+    props: {
+      vendas
+    }
+  };
 
 
-
+}
