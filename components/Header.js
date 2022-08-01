@@ -8,7 +8,7 @@ export default class Header extends Component {
       <Head>
         <title>My page title</title>
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
-        <meta http-equiv="refresh" content="30"></meta>
+        <meta httpEquiv="refresh" content="30"></meta>
         <title>Vaga FullStack Desafio</title>
         
       </Head>
