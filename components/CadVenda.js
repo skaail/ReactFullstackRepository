@@ -1,5 +1,14 @@
-
+import { createClient } from "next-sanity";
 import React, { Component } from 'react'
+
+const client = createClient({
+  projectId: "tmdmvjqt",
+  dataset: "compras",
+  token: 'skzhPshmupTGmkSdXPlS7FpNiRMO3tUqa3LLNNLOGtyTQZGNPcdbpapns53y6Awm63SM89wrzJro3WVmGB6dbxQsNLctMx6bEJ78eau0ZVu4TrhaHGsDEfiShpuycmSV5EKcwHg6g4nf2JHuUowU4evZ13pBJcbaez4pvNTvyccig3yrKO9H', 
+  apiVersion: "2021-10-14",
+  useCdn: false
+});
+
 
 
 
@@ -10,34 +19,18 @@ export default class CadVenda extends Component {
     
         const cliente = e.target.cliente.value;
         const produto = e.target.produto.value;
-        const data = e.target.data.value;
 
-        let headersList = {
-            "Accept": "*/*",
-            "Content-Type": "application/json",
-            "Authorization": "skaCQcSb5p6wANeyXAICkL0sHcOk7V0c82LzjF4NBXiApcGnhF71Qtws0Zli87LSb1HrFs8ocXb0Y4jLYFb5L0EQXT3ONtpu1yXeiD23KROpSOrorsuqyz62icbbVQYi5c50Dk2ihVSHQcWQDYoWJjkhBwpSgeEn3eLp7dzSlhMfnxcmZHZT"
-           }
-           
-           let bodyContent = JSON.stringify({ 
-             "mutations": [
-               { 
-                 "create": { 
-                   "_type": "vendas", 
-                   "cliente": "Teste Insert" 
-                 } 
-               }
-             ]
-           });
-           
-           fetch("https://tmdmvjqt.api.sanity.io/v2021-06-07/data/mutate/production", { 
-             method: "POST",
-             body: bodyContent,
-             headers: headersList
-           }).then(function(response) {
-             return response.text();
-           }).then(function(data) {
-             console.log(data);
-           })
+        const doc = {
+          
+          _type: 'vendas',
+          cliente: cliente,
+          produto: produto,
+        }
+        
+        client.create(doc).then((res) => {
+          console.log('Bike was created (or was already present)')
+        })
+
       };
 
   render() {

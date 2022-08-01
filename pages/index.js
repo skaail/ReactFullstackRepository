@@ -17,9 +17,9 @@ export default function IndexPage({ vendas }) {
 }
 
 const client = createClient({
-  projectId: process.env.SANITY_API_PROJECT_ID,
-  dataset: process.env.SANITY_API_DATASET,
-  token: process.env.SANITY_API_WRITE_TOKEN, 
+  projectId: "tmdmvjqt",
+  dataset: "compras",
+  token: 'skzhPshmupTGmkSdXPlS7FpNiRMO3tUqa3LLNNLOGtyTQZGNPcdbpapns53y6Awm63SM89wrzJro3WVmGB6dbxQsNLctMx6bEJ78eau0ZVu4TrhaHGsDEfiShpuycmSV5EKcwHg6g4nf2JHuUowU4evZ13pBJcbaez4pvNTvyccig3yrKO9H', 
   apiVersion: "2021-10-14",
   useCdn: false
 });
