@@ -13,7 +13,7 @@ export default function IndexPage({ vendas }) {
       </header>
       <main>
 
-        <table border='1' class="table">
+        <table border='1' className="table">
           <thead>
             <tr>
               <td scope="col">Cliente</td>

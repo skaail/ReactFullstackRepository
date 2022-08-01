@@ -43,19 +43,19 @@ export default class CadVenda extends Component {
   render() {
     return (
         <form onSubmit={this.handleSubmit}>
-        <div class="mb-3">
-            <label for="Cliente" class="form-label">Cliente</label>
-            <input type="text" class="form-control" name="cliente"></input>
+        <div className="mb-3">
+            <label for="Cliente" className="form-label">Cliente</label>
+            <input type="text" className="form-control" name="cliente"></input>
         </div>
-        <div class="mb-3">
-        <label for="Produto" class="form-label">Produto</label>
-            <input type="text" class="form-control" name="produto"></input>
+        <div className="mb-3">
+        <label for="Produto" className="form-label">Produto</label>
+            <input type="text" className="form-control" name="produto"></input>
         </div>
-        <div class="mb-3">
-        <label for="Ciente" class="form-label">Data</label>
-            <input type="date" class="form-control" name="data"></input>
+        <div className="mb-3">
+        <label for="Ciente" className="form-label">Data</label>
+            <input type="date" className="form-control" name="data"></input>
         </div>
-        <button type="submit" class="btn btn-primary">Submit</button>
+        <button type="submit" className="btn btn-primary">Submit</button>
         </form>
     )
   }
