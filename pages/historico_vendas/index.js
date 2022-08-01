@@ -10,7 +10,7 @@ export default function IndexPage({ vendas }) {
         <Header></Header>
         <NavBar></NavBar>
       <header>
-        <h1>Histórico de vendas 1</h1>
+        <h1>Histórico de vendas</h1>
       </header>
       <main>
       <Table  striped bordered hover size="sm">
