@@ -5,7 +5,6 @@ import Table from 'react-bootstrap/Table';
 
 
 export default function IndexPage({ vendas }) {
-  
 
   return (
     <>
@@ -49,11 +48,13 @@ const client = createClient({
 });
 
 
+export async function getStaticProps() {
+  const vendas = await client.fetch(`*[_type == "vendas"]`);
+  return {
+    props: {
+      vendas
+    }
+  };
 
-const query = '*[_type == "vendas"]'
 
-const subscription = client.listen(query)
-  .subscribe(update => {
-    const vendas = update.result
-    console.log(`${vendas.cliente} commented: ${comment.produto}`)
-  })
+}
