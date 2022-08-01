@@ -58,12 +58,3 @@ export async function getStaticProps() {
 
 
 }
-
-const query = '*[_type == "vendas"]'
-
-client.fetch(query).then((vendas) => {
-  console.log('Bikes with more than one seat:')
-  vendas.forEach((venda) => {
-    console.log(`${venda.cliente} (${venda.produto} seats)`)
-  })
-})
