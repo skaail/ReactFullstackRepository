@@ -36,18 +36,14 @@ export default function IndexPage({ vendas }) {
   );
 }
 
-window.onload = function (){
-  getStaticProps()
-
-  const client = createClient({
-    projectId: "j8341ehi",
-    dataset: "production",
-    apiVersion: "2021-10-14",
-    useCdn: false
-  });
-}
 
 
+const client = createClient({
+  projectId: "tmdmvjqt",
+  dataset: "compras",
+  apiVersion: "2021-10-14",
+  useCdn: false
+});
 
 
 export async function getStaticProps() {

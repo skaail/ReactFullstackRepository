@@ -1,11 +1,11 @@
 {
   "root": true,
   "project": {
-    "name": "vaga-fullstack"
+    "name": "vaga-fullstrack"
   },
   "api": {
-    "projectId": "j8341ehi",
-    "dataset": "production"
+    "projectId": "tmdmvjqt",
+    "dataset": "compras"
   },
   "plugins": [
     "@sanity/base",
