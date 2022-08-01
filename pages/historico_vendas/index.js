@@ -24,9 +24,9 @@ export default function IndexPage({ vendas }) {
           <tbody>
             {vendas.map((vendas) => (
               <tr>
-                <td key={vendas.cliente}>{vendas?.cliente}</td>
-                <td key={vendas.produto}>{vendas?.produto}</td>
-                <td key={vendas._createdAt}>{vendas?._createdAt}</td>
+                <td key={vendas?.cliente}>{vendas?.cliente}</td>
+                <td key={vendas?.produto}>{vendas?.produto}</td>
+                <td key={vendas?._createdAt}>{vendas?._createdAt}</td>
               </tr>
             ))}
           </tbody>
