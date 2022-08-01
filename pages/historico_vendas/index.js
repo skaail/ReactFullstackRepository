@@ -53,7 +53,6 @@ const client = createClient({
 
 export async function getStaticProps() {
   const vendas = await client.fetch(`*[_type == "vendas"]`);
-  console.log(vendas);
   return {
     props: {
       vendas
@@ -61,3 +60,13 @@ export async function getStaticProps() {
     revalidate: 600,
   };
 }
+
+  const query = '*[_type == "vendas"]'
+
+  
+  const subscription = client.listen(query).subscribe((update) => {
+    getStaticProps()
+    const comment = update.result
+    console.log(comment)
+  })
+  
