@@ -25,7 +25,6 @@ export default function IndexPage({ vendas }) {
             </thead>
             <tbody>
             {vendas.map((vendas) => (
-              
               <tr className={vendas.status}>
                 <td >{vendas.cliente}</td>
                 <td >{vendas.produto}</td>
@@ -54,6 +53,7 @@ const client = createClient({
 
 export async function getStaticProps() {
   const vendas = await client.fetch(`*[_type == "vendas"]`);
+  console.log(vendas);
   return {
     props: {
       vendas
