@@ -6,13 +6,6 @@ import Table from 'react-bootstrap/Table';
 
 export default function IndexPage({ vendas }) {
 
-  state = {
-    vendas: null
-  };
-  
-
-
-
   return (
     <>
         <Header></Header>
