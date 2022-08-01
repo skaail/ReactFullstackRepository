@@ -57,6 +57,7 @@ export async function getStaticProps() {
   return {
     props: {
       vendas
-    }
+    },
+    revalidate: 600,
   };
 }
