@@ -3,6 +3,9 @@ import Header from "../../components/Header";
 import NavBar from "../../components/NavBar";
 
 
+
+
+
 export default function IndexPage({ vendas }) {
   return (
     <>
@@ -24,9 +27,9 @@ export default function IndexPage({ vendas }) {
           <tbody>
             {vendas.map((vendas) => (
               <tr>
-                <td >{vendas?.cliente}</td>
-                <td >{vendas?.produto}</td>
-                <td >{vendas?._createdAt}</td>
+                <td key={vendas.cliente}>{vendas?.cliente}</td>
+                <td key={vendas.produto}>{vendas?.produto}</td>
+                <td key={vendas._createdAt}>{vendas?._createdAt}</td>
               </tr>
             ))}
           </tbody>
