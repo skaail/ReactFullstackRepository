@@ -16,12 +16,15 @@ export default class CadVenda extends Component {
     handleSubmit = (e) => {
         e.preventDefault();
         console.log("submitted");
+
+        document.getElementById("myModal").style.display = "block";
+        
+
+
     
         const cliente = e.target.cliente.value;
         const produto = e.target.produto.value;
         const valor = e.target.valor.value;
-      
-      modal.style.display = "none";
         
 
         const doc = {
@@ -55,12 +58,11 @@ export default class CadVenda extends Component {
             <input type="text" className="form-control" name="valor" required></input>
         </div>
         <button type="submit" className="btn btn-primary">Submit</button>
-<div id="myModal" className="modal">
-          <div clasNames="modal-content">
+
+          <div clasNames="modal-content" >
             <span clasNames="close">&times;</span>
             <p>Cadastrado com sucesso</p>
           </div>
-</div>
         </form>
     )
   }
