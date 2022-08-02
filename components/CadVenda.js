@@ -55,10 +55,12 @@ export default class CadVenda extends Component {
             <input type="text" className="form-control" name="valor" required></input>
         </div>
         <button type="submit" className="btn btn-primary">Submit</button>
+<div id="myModal" className="modal">
           <div clasNames="modal-content">
             <span clasNames="close">&times;</span>
             <p>Cadastrado com sucesso</p>
           </div>
+</div>
         </form>
     )
   }
