@@ -2,6 +2,7 @@ import { createClient } from "next-sanity";
 import Header from "../../components/Header";
 import NavBar from "../../components/NavBar";
 import CadVenda from "../../components/CadVenda";
+import Modal from "../../components/Modal"
 
 
 export default function IndexPage({ vendas }) {
@@ -14,6 +15,7 @@ export default function IndexPage({ vendas }) {
       </header>
       <main>
         <CadVenda></CadVenda>
+        <Modal></Modal>
       </main>
     </>
   );
