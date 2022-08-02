@@ -15,10 +15,16 @@ const client = createClient({
 export default class CadVenda extends Component {
     handleSubmit = (e) => {
         e.preventDefault();
-        console.log("submitted");
+        console.log("submitted");   
+
+        document.getElementsByClassName("close")[0].onclick = function() {
+          document.getElementById("myModal").style.display = "none";
+          window.location.reload(false);
+        }
 
         document.getElementById("myModal").style.display = "block";
         
+
 
 
     
@@ -58,12 +64,7 @@ export default class CadVenda extends Component {
             <input type="text" className="form-control" name="valor" required></input>
         </div>
         <button type="submit" className="btn btn-primary">Submit</button>
-        <div id="myModal" className="modal">
-          <div clasNames="modal-content" >
-            <span clasNames="close">&times;</span>
-            <p>Cadastrado com sucesso</p>
-          </div>
-          </div>
+       
         </form>
     )
   }
