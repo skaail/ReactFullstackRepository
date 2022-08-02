@@ -20,6 +20,8 @@ export default class CadVenda extends Component {
         const cliente = e.target.cliente.value;
         const produto = e.target.produto.value;
         const valor = e.target.valor.value;
+      
+      modal.style.display = "none";
         
 
         const doc = {
@@ -53,6 +55,10 @@ export default class CadVenda extends Component {
             <input type="text" className="form-control" name="valor" required></input>
         </div>
         <button type="submit" className="btn btn-primary">Submit</button>
+          <div clasNames="modal-content">
+            <span clasNames="close">&times;</span>
+            <p>Cadastrado com sucesso</p>
+          </div>
         </form>
     )
   }
