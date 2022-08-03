@@ -9,20 +9,15 @@ import Table from 'react-bootstrap/Table';
 
 
 export default function IndexPage({ vendas }) {
-  let router = useRouter()
+    let router = useRouter()
 
-  useEffect(() => {
-    let token = sessionStorage.getItem('Token')
-  
-    if(!token) {
-      router.push('../login.js')
-    }
-  }, [])  
-  
-  useEffect(() => {
-    let token = sessionStorage.getItem('Token')
-
-}, [])  
+    useEffect(() => {
+      let token = sessionStorage.getItem('Token')
+    
+      if(!token) {
+          router.push('/login')
+      }
+    }, [])   
 
   return (
     <>
