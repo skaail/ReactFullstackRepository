@@ -7,17 +7,19 @@ import { useRouter } from "next/router";
 import {collection, addDoc} from 'firebase/firestore'
 import Table from 'react-bootstrap/Table';
 
-
 export default function IndexPage({ vendas }) {
-    let router = useRouter()
+  let router = useRouter()
 
-    useEffect(() => {
-      let token = sessionStorage.getItem('Token')
-    
-      if(!token) {
-          router.push('/login')
-      }
-    }, [])   
+  useEffect(() => {
+    let token = sessionStorage.getItem('Token')
+  
+    if(!token) {
+        router.push('/login')
+    }
+  }, [])  
+
+
+
 
   return (
     <>
@@ -50,11 +52,10 @@ export default function IndexPage({ vendas }) {
           </tbody>
       </Table>
       </main>
+
     </>
   );
 }
-
-
 
 const client = createClient({
   projectId: "tmdmvjqt",
@@ -66,12 +67,13 @@ const client = createClient({
 
 
 
+export async function getStaticProps() {
+  const vendas = await client.fetch(`*[_type == "vendas"]`);
 
-export async function getServerSideProps() {
-  const vendas = await client.fetch(`*[_type == "vendas"]`)
   return {
     props: {
       vendas
-    }
-  }
+    },
+    revalidate: 600,
+  };
 }
