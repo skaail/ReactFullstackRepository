@@ -38,6 +38,7 @@ export default function Register() {
             console.log(response.docs.map((data) => {
                 setEmail(data.data().email)
                 setRole(data.data().role)
+                console.log(data.data().role)
                 return {...data.data(), id: data.id}
             }))
         })
