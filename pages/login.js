@@ -15,7 +15,7 @@ export default function Register() {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [id, setId] = useState('');
-    const databaseRef = query(collection(database, 'users'), where("email", "==", "ts3@gmail.com"))
+    const databaseRef = query(collection(database, 'users'), where("email", "==", email))
 
 
     const signUp = () => {
