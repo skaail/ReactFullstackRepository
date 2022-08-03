@@ -4,7 +4,7 @@ import NavBar from "../../components/NavBar";
 import Table from 'react-bootstrap/Table';
 import { useEffect } from 'react'
 import { useState } from 'react'
-import {app} from '../firebaseConfig'
+import {app} from '.././firebaseConfig'
 
 
 function aprovarVenda(id){
