@@ -22,7 +22,7 @@ export default function Register() {
             .then((response) => {
                 console.log(response.user)
                 sessionStorage.setItem('Token', response.user.accessToken);
-                sessionStorage.setItem('role', set);
+                sessionStorage.setItem('role', id);
                 router.push('/home')
             })
             .catch(err => {
@@ -38,8 +38,8 @@ export default function Register() {
         await getDocs(databaseRef)
         .then((response) => {
             console.log(response.docs.map((data) => {
-                setId(data.role)
-                return {...data.data(), id: data.id}
+                setId(data.id)
+                return {...data.data(), id: data.id, role: data.role}
             }))
         })
     }
