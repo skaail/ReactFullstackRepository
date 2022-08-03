@@ -17,6 +17,11 @@ export default function IndexPage({ vendas }) {
         router.push('/login')
     }
   }, [])  
+
+  useEffect(() => {
+    let token = sessionStorage.getItem('Token')
+
+}, [])  
   return (
     <>
         <Header></Header>

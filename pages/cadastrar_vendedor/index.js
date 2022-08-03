@@ -41,6 +41,10 @@ export default function CadVendedor() {
         signUp(event)
       }
 
+      useEffect(() => {
+        let token = sessionStorage.getItem('Token')
+
+    }, [])  
 
 
     const addData = () => {
