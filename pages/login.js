@@ -63,30 +63,40 @@ export default function Register() {
     return (
         <div >
 
-            <main >
-                <h1>Login</h1>
+            <main className='login'>
 
+        <h1 className="title">Login</h1>
+
+        <div className="mb-3">
                 <input
                     placeholder='Email'
                     onChange={(event) => setEmail(event.target.value)}
                     value={email}
                     type='email'
+                    className="form-control"
                 />
+        </div>
+        <div className="mb-3">
                 <input
                     placeholder='Password'
                     onChange={(event) => setPassword(event.target.value)}
                     value={password}
                     type='password'
+                    className="form-control"
                 />
-
+        </div>
+        <div className="d-grid">
                 <button
+                className="btn btn-primary"
+
                     onClick={login}
                 >Sign In</button>
-                <hr />
                 <button
+                className="btn btn-primary"
+
                     onClick={register}
                 >Register</button>
-                <hr />
+        </div>
 
 
             </main>
