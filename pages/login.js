@@ -15,14 +15,12 @@ export default function Register() {
     const router = useRouter();
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
-    const [id, setId] = useState('');
 
     const signUp = () => {
         signInWithEmailAndPassword(auth, email, password)
             .then((response) => {
                 console.log(response.user)
                 sessionStorage.setItem('Token', response.user.accessToken);
-                sessionStorage.setItem('id', id);
                 router.push('/home')
             })
             .catch(err => {
@@ -39,7 +37,7 @@ export default function Register() {
         .then((response) => {
             console.log(response.docs.map((data) => {
                 setId(data.id)
-                return {...data.data(), id: data.id}
+                return {...data.data()}
             }))
         })
     }
