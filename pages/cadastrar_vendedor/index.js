@@ -7,7 +7,6 @@ import { getAuth, createUserWithEmailAndPassword } from 'firebase/auth'
 import { useRouter } from "next/router";
 import {collection, addDoc} from 'firebase/firestore'
 import { useState } from 'react'
-import { useEffect } from 'react'
 
 
 
