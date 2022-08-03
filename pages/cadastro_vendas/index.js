@@ -15,7 +15,7 @@ export default function IndexPage({ vendas }) {
     let token = sessionStorage.getItem('Token')
   
     if(!token) {
-        router.push('/login')
+      router.push('../login.js')
     }
   }, [])  
   return (
