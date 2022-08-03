@@ -14,7 +14,7 @@ export default function Register() {
     const router = useRouter();
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
-    const [id, setId] = useState('');
+    const [role, setRole] = useState('');
     const databaseRef = query(collection(database, 'users'), where("email", "==", email))
 
 
@@ -23,7 +23,7 @@ export default function Register() {
             .then((response) => {
                 console.log(response.user)
                 sessionStorage.setItem('Token', response.user.accessToken);
-                sessionStorage.setItem('role', id);
+                sessionStorage.setItem('role', role);
                 router.push('/home')
             })
             .catch(err => {
@@ -36,7 +36,8 @@ export default function Register() {
         await getDocs(databaseRef)
         .then((response) => {
             console.log(response.docs.map((data) => {
-                setId(data.data().role)
+                setEmail(data.data().email)
+                setRole(data.data().role)
                 return {...data.data(), id: data.id}
             }))
         })
