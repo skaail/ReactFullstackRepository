@@ -22,7 +22,7 @@ export default function Register() {
             .then((response) => {
                 console.log(response.user)
                 sessionStorage.setItem('Token', response.user.accessToken);
-                sessionStorage.setItem('id', id);
+                sessionStorage.setItem('role', role);
                 router.push('/home')
             })
             .catch(err => {
