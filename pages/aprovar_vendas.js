@@ -27,22 +27,6 @@ export default function IndexPage({ vendas }) {
         router.push('/login')
     }
   }, [])  
-    
-    const [role, setRole] = useState(null)
-    const auth = getAuth()
-
-
-    useEffect(() => {
-        let token = sessionStorage.getItem('Token')
-
-    }, [])  
-
-      useEffect(() => {
-        let token = sessionStorage.getItem('Token')
-
-    }, [])  
-
-
 
 
   return (
