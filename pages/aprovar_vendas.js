@@ -1,6 +1,6 @@
 import { createClient } from "next-sanity";
-import Header from "../../components/Header";
-import NavBar from "../../components/NavBar";
+import Header from "../components/Header";
+import NavBar from "../components/NavBar";
 import { useEffect } from 'react'
 import {app, database} from '../../firebaseConfig'
 import { getAuth, createUserWithEmailAndPassword } from 'firebase/auth'
