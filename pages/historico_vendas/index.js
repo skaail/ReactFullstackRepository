@@ -4,8 +4,7 @@ import NavBar from "../../components/NavBar";
 import Table from 'react-bootstrap/Table';
 import { useRouter } from "next/router";
 import { useEffect } from 'react'
-import {app} from '.././firebaseConfig'
-
+import {app, database} from '../../firebaseConfig'
 
 export default function IndexPage({ vendas }) {
   let router = useRouter()

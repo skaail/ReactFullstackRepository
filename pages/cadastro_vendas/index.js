@@ -5,7 +5,7 @@ import CadVenda from "../../components/CadVenda";
 import Modal from "../../components/Modal"
 import { useRouter } from "next/router";
 import { useEffect } from 'react'
-import {app} from '.././firebaseConfig'
+import {app, database} from '../../firebaseConfig'
 
 
 export default function IndexPage({ vendas }) {
