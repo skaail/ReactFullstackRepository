@@ -66,7 +66,7 @@ export default function CadVendedor() {
       }
     
       function NavBar(props) {
-        if (role == 1) {
+        if (role == 2) {
           return <NavVend />;
         }
         return <NavMan />;
