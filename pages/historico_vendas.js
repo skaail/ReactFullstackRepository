@@ -5,9 +5,7 @@ import { useEffect } from 'react'
 import {app} from '../firebaseConfig'
 import { useRouter } from "next/router";
 import {collection, addDoc} from 'firebase/firestore'
-
-
-
+import Table from 'react-bootstrap/Table';
 
 export default function IndexPage({ vendas }) {
   let router = useRouter()
@@ -28,8 +26,32 @@ export default function IndexPage({ vendas }) {
         <Header></Header>
         <NavBar></NavBar>
       <header>
-        <h1>Home</h1>
+        <h1>Histórico de vendas</h1>
       </header>
+      <main>
+      <Table  striped bordered hover size="sm">
+            <thead>
+              <tr>
+                <th>Cliente</th>
+                <th>Produto</th>
+                <th>Valor</th>
+                <th>Data</th>
+                <th>Comissão</th>
+              </tr>
+            </thead>
+            <tbody>
+            {vendas.map((vendas) => (
+              <tr className={vendas.status}>
+                <td >{vendas.cliente}</td>
+                <td >{vendas.produto}</td>
+                <td >{vendas.valor}</td>
+                <td >{vendas._createdAt}</td>
+                <td >{vendas.comis}</td>
+              </tr>
+            ))}
+          </tbody>
+      </Table>
+      </main>
 
     </>
   );
