@@ -25,42 +25,6 @@ export default function IndexPage({ vendas }) {
   
     if(!token) {
         router.push('/login')
-    }else{
-      return (
-        <>
-            <Header></Header>
-            <NavBar></NavBar>
-          <header>
-            <h1>Histórico de vendas</h1>
-          </header>
-          <main>
-          <Table  striped bordered hover size="sm">
-                <thead>
-                  <tr>
-                    <th>Cliente</th>
-                    <th>Produto</th>
-                    <th>Valor</th>
-                    <th>Data</th>
-                    <th>Aprovação</th>
-                  </tr>
-                </thead>
-                <tbody>
-                {vendas.map((vendas) => (
-                  
-                  <tr className='{vendas.status}'>
-                    <td >{vendas.cliente}</td>
-                    <td >{vendas.produto}</td>
-                    <td >{vendas.valor}</td>
-                    <td >{vendas._createdAt}</td>
-                    <td ><button onClick={() => aprovarVenda(vendas._id)}>Aprovar venda</button>
-                    <button onClick={() => reprovarVenda(vendas._id)}>Reprovar venda</button></td>
-                  </tr>
-                ))}
-              </tbody>
-          </Table>
-          </main>
-        </>
-      );
     }
   }, [])  
     
@@ -81,7 +45,41 @@ export default function IndexPage({ vendas }) {
 
 
 
- 
+  return (
+    <>
+        <Header></Header>
+        <NavBar></NavBar>
+      <header>
+        <h1>Histórico de vendas</h1>
+      </header>
+      <main>
+      <Table  striped bordered hover size="sm">
+            <thead>
+              <tr>
+                <th>Cliente</th>
+                <th>Produto</th>
+                <th>Valor</th>
+                <th>Data</th>
+                <th>Aprovação</th>
+              </tr>
+            </thead>
+            <tbody>
+            {vendas.map((vendas) => (
+              
+              <tr className='{vendas.status}'>
+                <td >{vendas.cliente}</td>
+                <td >{vendas.produto}</td>
+                <td >{vendas.valor}</td>
+                <td >{vendas._createdAt}</td>
+                <td ><button onClick={() => aprovarVenda(vendas._id)}>Aprovar venda</button>
+                <button onClick={() => reprovarVenda(vendas._id)}>Reprovar venda</button></td>
+              </tr>
+            ))}
+          </tbody>
+      </Table>
+      </main>
+    </>
+  );
 }
 
 

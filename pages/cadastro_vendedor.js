@@ -29,20 +29,6 @@ export default function CadVendedor() {
     
       if(!token) {
           router.push('/login')
-      }else{
-        return(
-          <div>
-  
-          <Header></Header>
-          <NavBar></NavBar>
-              <h1>Register</h1>
-  
-              <input placeholder='Email' onChange={(event) =>setEmail(event.target.value)} value={email}></input>
-              <input placeholder='Senha' onChange={(event) =>setSenha(event.target.value)} value={senha}></input>
-              <input name="hiddenInput" value="role" type="hidden" />
-              <button onClick={cadastrarVendedor}>Cadastrar</button>
-          </div>
-      )
       }
     }, [])  
 
@@ -64,7 +50,19 @@ export default function CadVendedor() {
         })
         .catch((err) => {   console.error(err) })
       }
-    
+    return(
+        <div>
+
+        <Header></Header>
+        <NavBar></NavBar>
+            <h1>Register</h1>
+
+            <input placeholder='Email' onChange={(event) =>setEmail(event.target.value)} value={email}></input>
+            <input placeholder='Senha' onChange={(event) =>setSenha(event.target.value)} value={senha}></input>
+            <input name="hiddenInput" value="role" type="hidden" />
+            <button onClick={cadastrarVendedor}>Cadastrar</button>
+        </div>
+    )
 }
 
 const client = createClient({

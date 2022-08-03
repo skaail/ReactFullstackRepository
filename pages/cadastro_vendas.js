@@ -18,23 +18,21 @@ export default function IndexPage({ vendas }) {
   
     if(!token) {
         router.push('/login')
-    }else{
-      return (
-        <>
-            <Header></Header>
-            <NavBar></NavBar>
-          <header>
-            <h1>Cadastro de vendas</h1>
-          </header>
-          <main>
-            <CadVenda></CadVenda>
-            <Modal></Modal>
-          </main>
-        </>
-      );
     }
   }, [])  
-  
+  return (
+    <>
+        <Header></Header>
+        <NavBar></NavBar>
+      <header>
+        <h1>Cadastro de vendas</h1>
+      </header>
+      <main>
+        <CadVenda></CadVenda>
+        <Modal></Modal>
+      </main>
+    </>
+  );
 }
 
 
