@@ -15,12 +15,8 @@ export default function IndexPage({ vendas }) {
   
     if(!token) {
         router.push('/login')
-    }
-  }, [])  
-
-
-
-
+    }else{
+      
   return (
     <>
         <Header></Header>
@@ -55,6 +51,12 @@ export default function IndexPage({ vendas }) {
 
     </>
   );
+    }
+  }, [])  
+
+
+
+
 }
 
 const client = createClient({
