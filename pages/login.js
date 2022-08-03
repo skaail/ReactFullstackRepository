@@ -1,0 +1,95 @@
+
+import { useEffect } from 'react';
+import {
+    getAuth,
+    signInWithEmailAndPassword,
+} from 'firebase/auth'
+import { useState } from 'react';
+import { useRouter } from 'next/router';
+import {app, database} from '../firebaseConfig'
+import {collection, getDocs, where, query} from 'firebase/firestore'
+
+export default function Register() {
+    const databaseRef = query(collection(database, 'users'), where("role", "==", 2))
+    const auth = getAuth();
+    const router = useRouter();
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
+    const [id, setId] = useState('');
+
+    const signUp = () => {
+        signInWithEmailAndPassword(auth, email, password)
+            .then((response) => {
+                console.log(response.user)
+                sessionStorage.setItem('Token', response.user.accessToken);
+                sessionStorage.setItem('id', id);
+                router.push('/home')
+            })
+            .catch(err => {
+                alert('Cannot Log in')
+            })
+    }
+
+    const register = () => {
+                router.push('/register')
+    }
+
+    const getData = async () => {
+        await getDocs(databaseRef)
+        .then((response) => {
+            console.log(response.docs.map((data) => {
+                setId(data.id)
+                return {...data.data(), id: data.id}
+            }))
+        })
+    }
+
+    const login = event => {
+        getData(event)
+        signUp(event)
+      }
+
+
+
+    useEffect(() => {
+        let token = sessionStorage.getItem('Token')
+        getData()
+        if(token){
+            
+            router.push('/home')
+        }
+    }, [])
+
+    return (
+        <div >
+
+            <main >
+                <h1>Login</h1>
+
+                <input
+                    placeholder='Email'
+                    onChange={(event) => setEmail(event.target.value)}
+                    value={email}
+                    type='email'
+                />
+                <input
+                    placeholder='Password'
+                    onChange={(event) => setPassword(event.target.value)}
+                    value={password}
+                    type='password'
+                />
+
+                <button
+                    onClick={login}
+                >Sign In</button>
+                <hr />
+                <button
+                    onClick={register}
+                >Register</button>
+                <hr />
+
+
+            </main>
+        </div>
+    )
+}
