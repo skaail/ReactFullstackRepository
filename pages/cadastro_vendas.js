@@ -5,6 +5,9 @@ import { useEffect } from 'react'
 import {app} from '../firebaseConfig'
 import { useRouter } from "next/router";
 import {collection, addDoc} from 'firebase/firestore'
+import CadVenda from '../components/CadVenda'
+import CadVenda from '../components/Modal'
+
 
 
 export default function IndexPage({ vendas }) {
