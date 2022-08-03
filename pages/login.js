@@ -10,7 +10,7 @@ import {app, database} from '../firebaseConfig'
 import {collection, getDocs, where, query} from 'firebase/firestore'
 
 export default function Register() {
-    const databaseRef = query(collection(database, 'users'), where("role", "==", 2))
+    const databaseRef = collection(database, 'users')
     const auth = getAuth();
     const router = useRouter();
     const [email, setEmail] = useState('');
