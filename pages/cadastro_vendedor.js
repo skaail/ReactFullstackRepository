@@ -1,6 +1,7 @@
 import { createClient } from "next-sanity";
 import Header from "../components/Header";
-import NavBar from "../components/NavBar";
+import NavBarVendedor from "../components/NavBarVendedor";
+import NavBarMan from "../components/NavBarManager";
 import { useEffect } from 'react'
 import {app, database} from '../firebaseConfig'
 import { getAuth, createUserWithEmailAndPassword } from 'firebase/auth'
@@ -12,7 +13,6 @@ import { useState } from 'react'
 
 export default function CadVendedor() {
     
-    const [role, setRole] = useState(null)
     const databaseRef = collection(database, 'users')
     const auth = getAuth()
     const [email, setEmail] = useState('')
@@ -23,14 +23,20 @@ export default function CadVendedor() {
     }
 
     let router = useRouter()
-
+    const [role, setRole] = useState('');
+  
     useEffect(() => {
       let token = sessionStorage.getItem('Token')
-    
+      let role = sessionStorage.getItem('role')
+      setRole(role)
+      console.log(role)
       if(!token) {
           router.push('/login')
       }
-    }, [])  
+      
+  
+      
+    }, []) 
 
     const cadastrarVendedor = event => {
         addData(event)
@@ -49,6 +55,21 @@ export default function CadVendedor() {
             setRole(null)
         })
         .catch((err) => {   console.error(err) })
+      }
+
+      function NavVend(props) {
+        return <NavBarVendedor></NavBarVendedor>
+      }
+      
+      function NavMan(props) {
+        return <NavBarMan></NavBarMan>
+      }
+    
+      function NavBar(props) {
+        if (role == 1) {
+          return <NavVend />;
+        }
+        return <NavMan />;
       }
     return(
         <div>
