@@ -11,15 +11,6 @@ import { useState } from 'react'
 
 
 export default function CadVendedor() {
-  let router = useRouter()
-
-  useEffect(() => {
-    let token = sessionStorage.getItem('Token')
-  
-    if(!token) {
-        router.push('/login')
-    }
-  }, [])  
     
     const [role, setRole] = useState(null)
     const databaseRef = collection(database, 'users')
@@ -31,9 +22,14 @@ export default function CadVendedor() {
         createUserWithEmailAndPassword(auth, email, senha)
     }
 
-    useEffect(() => {
-        let token = sessionStorage.getItem('Token')
+    let router = useRouter()
 
+    useEffect(() => {
+      let token = sessionStorage.getItem('Token')
+    
+      if(!token) {
+          router.push('/login')
+      }
     }, [])  
 
     const cadastrarVendedor = event => {
@@ -41,10 +37,6 @@ export default function CadVendedor() {
         signUp(event)
       }
 
-      useEffect(() => {
-        let token = sessionStorage.getItem('Token')
-
-    }, [])  
 
 
     const addData = () => {
