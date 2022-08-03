@@ -28,7 +28,7 @@ export default function CadVendedor() {
       let token = sessionStorage.getItem('Token')
     
       if(!token) {
-        router.push('../login.js')
+          router.push('/login')
       }
     }, [])  
 

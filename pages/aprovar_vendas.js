@@ -1,10 +1,12 @@
 import { createClient } from "next-sanity";
 import Header from "../../components/Header";
 import NavBar from "../../components/NavBar";
-import Table from 'react-bootstrap/Table';
 import { useEffect } from 'react'
-import { useState } from 'react'
 import {app, database} from '../../firebaseConfig'
+import { getAuth, createUserWithEmailAndPassword } from 'firebase/auth'
+import { useRouter } from "next/router";
+import {collection, addDoc} from 'firebase/firestore'
+import { useState } from 'react'
 
 
 function aprovarVenda(id){
@@ -22,7 +24,7 @@ export default function IndexPage({ vendas }) {
     let token = sessionStorage.getItem('Token')
   
     if(!token) {
-        router.push('../login.js')
+        router.push('/login')
     }
   }, [])  
     
