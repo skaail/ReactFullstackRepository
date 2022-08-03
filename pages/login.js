@@ -10,7 +10,7 @@ import {app, database} from '../firebaseConfig'
 import {collection, getDocs, where, query} from 'firebase/firestore'
 
 export default function Register() {
-    const databaseRef = query(collection(database, 'users'), where("email", "==", email))
+    const databaseRef = query(collection(database, 'users'), where("role", "==", 2))
     const auth = getAuth();
     const router = useRouter();
     const [email, setEmail] = useState('');
@@ -22,7 +22,7 @@ export default function Register() {
             .then((response) => {
                 console.log(response.user)
                 sessionStorage.setItem('Token', response.user.accessToken);
-                sessionStorage.setItem('role', id);
+                sessionStorage.setItem('id', id);
                 router.push('/home')
             })
             .catch(err => {
@@ -34,11 +34,15 @@ export default function Register() {
                 router.push('/register')
     }
 
-    const querySnapshot = await getDocs(q);
-    querySnapshot.forEach((doc) => {
-      // doc.data() is never undefined for query doc snapshots
-      console.log(doc.id, " => ", doc.data());
-    });
+    const getData = async () => {
+        await getDocs(databaseRef)
+        .then((response) => {
+            console.log(response.docs.map((data) => {
+                setId(data.id)
+                return {...data.data(), id: data.id}
+            }))
+        })
+    }
 
     const login = event => {
         getData(event)
