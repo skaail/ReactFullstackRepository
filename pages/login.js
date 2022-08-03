@@ -31,9 +31,6 @@ export default function Register() {
             })
     }
 
-    const register = () => {
-                router.push('/register')
-    }
 
     const getData = async () => {
         await getDocs(databaseRef)
@@ -92,11 +89,6 @@ export default function Register() {
 
                     onClick={login}
                 >Sign In</button>
-                <button
-                className="btn btn-primary"
-
-                    onClick={register}
-                >Register</button>
         </div>
 
 
