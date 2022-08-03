@@ -2,6 +2,8 @@ import { createClient } from "next-sanity";
 import Header from "../../components/Header";
 import NavBar from "../../components/NavBar";
 import Table from 'react-bootstrap/Table';
+import { useEffect } from 'react'
+import { useState } from 'react'
 
 
 function aprovarVenda(id){
@@ -13,6 +15,15 @@ function reprovarVenda(id){
 }
 
 export default function IndexPage({ vendas }) {
+  let router = useRouter()
+
+  useEffect(() => {
+    let token = sessionStorage.getItem('Token')
+  
+    if(!token) {
+        router.push('/login')
+    }
+  }, [])  
 
 
 

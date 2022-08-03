@@ -4,6 +4,7 @@ import NavBar from "../../components/NavBar";
 import CadVenda from "../../components/CadVenda";
 import Modal from "../../components/Modal"
 import { useRouter } from "next/router";
+import { useEffect } from 'react'
 
 
 export default function IndexPage({ vendas }) {
