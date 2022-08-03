@@ -6,6 +6,7 @@ import {app} from '../firebaseConfig'
 import { useRouter } from "next/router";
 import {collection, addDoc} from 'firebase/firestore'
 import CadVenda from '../components/CadVenda'
+import Modal from '../components/Modal'
 
 
 
