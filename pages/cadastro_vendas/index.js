@@ -3,9 +3,19 @@ import Header from "../../components/Header";
 import NavBar from "../../components/NavBar";
 import CadVenda from "../../components/CadVenda";
 import Modal from "../../components/Modal"
+import { useRouter } from "next/router";
 
 
 export default function IndexPage({ vendas }) {
+  let router = useRouter()
+
+  useEffect(() => {
+    let token = sessionStorage.getItem('Token')
+  
+    if(!token) {
+        router.push('/login')
+    }
+  }, [])  
   return (
     <>
         <Header></Header>

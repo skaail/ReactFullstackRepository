@@ -11,6 +11,15 @@ import { useState } from 'react'
 
 
 export default function CadVendedor() {
+  let router = useRouter()
+
+  useEffect(() => {
+    let token = sessionStorage.getItem('Token')
+  
+    if(!token) {
+        router.push('/login')
+    }
+  }, [])  
     
     const [role, setRole] = useState(null)
     const databaseRef = collection(database, 'users')
