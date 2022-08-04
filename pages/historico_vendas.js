@@ -4,11 +4,38 @@ import NavBarVendedor from "../components/NavBarVendedor";
 import NavBarMan from "../components/NavBarManager";import { useEffect } from 'react'
 import {app} from '../firebaseConfig'
 import { useRouter } from "next/router";
-import {collection, addDoc} from 'firebase/firestore'
 import Table from 'react-bootstrap/Table';
 import { useState } from 'react'
+import Button from 'react-bootstrap/Button';
+
 
 export default function IndexPage({ vendas }) {
+
+  const [cli, setCliente] = useState("");
+  const [produto, setProduto] = useState("");
+  const [valor, setValor] = useState(null);
+
+  const handleSubmit = (e) => {
+      const id = document.getElementById("custId").value;
+      client.patch(id).set({cliente: cli, produto: produto, valor: parseFloat(valor)}).commit()
+  }
+
+  const remove = (id) => {
+    client.delete(id)  .then(() => {
+      window.location.reload(false);
+    })
+    
+  }
+
+  const modalShow = (id) => {
+    document.getElementsByClassName("close")[0].onclick = function() {
+      document.getElementById("myModal").style.display = "none";
+    }
+    document.getElementById("myModal").style.display = "block";
+    document.getElementById("custId").value = id;
+  }
+
+
   let router = useRouter()
   const [role, setRole] = useState('');
 
@@ -34,7 +61,7 @@ export default function IndexPage({ vendas }) {
   }
 
   function NavBar(props) {
-    if (role == 2) {
+    if (role == 1) {
       return <NavVend />;
     }
     return <NavMan />;
@@ -59,6 +86,7 @@ export default function IndexPage({ vendas }) {
                 <th>Valor</th>
                 <th>Data</th>
                 <th>Comissão</th>
+                <th>Ação</th>
               </tr>
             </thead>
             <tbody>
@@ -67,12 +95,50 @@ export default function IndexPage({ vendas }) {
                 <td >{vendas.cliente}</td>
                 <td >{vendas.produto}</td>
                 <td >{vendas.valor}</td>
+                
                 <td >{vendas._createdAt}</td>
-                <td >{vendas.comis}</td>
+                <td ><Button variant="success" onClick={() =>modalShow(vendas._id)}>Editar</Button>{' '}<Button variant="danger" onClick={() =>remove(vendas._id)}>Excluir</Button>{' '}</td>
               </tr>
             ))}
           </tbody>
       </Table>
+      <div id="myModal" className="modal">
+      <div className="modal-content">
+            <span className="close">&times;</span>
+      <form onSubmit={handleSubmit}>
+        <div className="mb-3">
+            <label htmlFor="Cliente" className="form-label">Cliente</label>
+        <input
+          type="text" 
+          className="form-control"
+          value={cli}
+          onChange={(e) => setCliente(e.target.value)}
+        />
+        </div>
+        <div className="mb-3">
+        <label htmlFor="Produto" className="form-label">Produto</label>
+        <input
+          type="text" 
+          className="form-control"
+          value={produto}
+          onChange={(e) => setProduto(e.target.value)}
+        />
+        </div>
+        <div className="mb-3">
+        <label htmlFor="Valor" className="form-label">Valor</label>
+        <input
+          type="number" 
+          className="form-control"
+          value={valor}
+          onChange={(e) => setValor(e.target.value)}
+        />
+        </div>
+        <input type="hidden" id="custId" name="custId"></input>
+        <button type="submit" className="btn btn-primary">Editar venda</button>
+       
+        </form>
+        </div> 
+      </div>
       </main>
 
     </>
@@ -91,6 +157,7 @@ const client = createClient({
 
 export async function getStaticProps() {
   const vendas = await client.fetch(`*[_type == "vendas"]`);
+  
 
   return {
     props: {

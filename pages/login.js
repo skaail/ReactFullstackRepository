@@ -19,9 +19,11 @@ export default function Register() {
 
 
     const signUp = () => {
+        if(email == 'gerente2loja.com'){role = 1}else{role =2}
         signInWithEmailAndPassword(auth, email, password)
             .then((response) => {
                 console.log(response.user)
+                
                 sessionStorage.setItem('Token', response.user.accessToken);
                 sessionStorage.setItem('role', role);
                 router.push('/home')

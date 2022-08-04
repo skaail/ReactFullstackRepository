@@ -44,7 +44,7 @@ export default function IndexPage({ vendas }) {
   }
 
   function NavBar(props) {
-    if (role == 2) {
+    if (role == 1) {
       return <NavVend />;
     }
     return <NavMan />;
