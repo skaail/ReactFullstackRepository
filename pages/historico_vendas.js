@@ -156,13 +156,10 @@ const client = createClient({
 
 
 export async function getServerSideProps() {
-  const vendas = await client.fetch(`*[_type == "vendas"]`);
-  
-
+  const vendas = await client.fetch(`*[_type == "vendas"]`)
   return {
     props: {
       vendas
-    },
-    revalidate: 600,
-  };
+    }
+  }
 }
