@@ -18,6 +18,7 @@ export default function IndexPage({ vendas }) {
   const handleSubmit = (e) => {
       const id = document.getElementById("custId").value;
       client.patch(id).set({cliente: cli, produto: produto, valor: parseFloat(valor)}).commit()
+      window.location.reload(false);
   }
 
   const remove = (id) => {
