@@ -155,7 +155,7 @@ const client = createClient({
 
 
 
-export async function getStaticProps() {
+export async function getServerSideProps() {
   const vendas = await client.fetch(`*[_type == "vendas"]`);
   
 
